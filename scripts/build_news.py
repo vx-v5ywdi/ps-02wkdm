@@ -95,7 +95,7 @@ def card(a,slug,en):
       '        <div class="news-body">\n'
       f'          <span class="news-tag">{esc(tag)}</span>\n'
       f'          <h3>{esc(title)}</h3>\n'
-      f'          <a class="news-more" href="novini/{slug}.html">{more}</a>\n'
+      f'          <a class="news-more" href="news/{slug}.html">{more}</a>\n'
       '        </div>\n      </article>')
 
 def card_list(a,slug,en):
@@ -129,13 +129,13 @@ items.sort(key=lambda a:(a.get('date',''),a['_slug']), reverse=True)
 
 # regenerate article pages fresh (remove stale ones first)
 valid={a['_slug'] for a in items}
-for d in ['novini','en/novini']:
+for d in ['news','en/news']:
     for h in glob.glob(d+'/*.html'):
         b=os.path.basename(h)[:-5]
         if b!='index' and b not in valid: os.remove(h); print('removed stale',h)
 for a in items:
-    open('novini/'+a['_slug']+'.html','w',encoding='utf-8').write(render(a,a['_slug'],False))
-    open('en/novini/'+a['_slug']+'.html','w',encoding='utf-8').write(render(a,a['_slug'],True))
-open('novini/index.html','w',encoding='utf-8').write(render_list(False))
-open('en/novini/index.html','w',encoding='utf-8').write(render_list(True))
+    open('news/'+a['_slug']+'.html','w',encoding='utf-8').write(render(a,a['_slug'],False))
+    open('en/news/'+a['_slug']+'.html','w',encoding='utf-8').write(render(a,a['_slug'],True))
+open('news/index.html','w',encoding='utf-8').write(render_list(False))
+open('en/news/index.html','w',encoding='utf-8').write(render_list(True))
 print('built',len(items),'items + 2 listing pages')
