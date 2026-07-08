@@ -64,3 +64,17 @@ if(burger&&nav){
   }));
   addEventListener('resize',()=>{if(innerWidth>1060)closeMenu()});
 }
+
+// Responsive Facebook page embed (Media page): render the plugin at its container width — no FB SDK.
+(function(){
+  var f=document.getElementById('fbpage'); if(!f) return;
+  function build(){
+    var cw=(f.parentElement&&f.parentElement.clientWidth)||340;
+    var w=Math.max(180,Math.min(500,Math.floor(cw)));
+    if(f._w===w) return; f._w=w;
+    f.setAttribute('width',w); f.style.width=w+'px';
+    f.src='https://www.facebook.com/plugins/page.php?href='+encodeURIComponent(f.getAttribute('data-href'))+'&tabs=timeline&width='+w+'&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true';
+  }
+  build();
+  var t; addEventListener('resize',function(){clearTimeout(t);t=setTimeout(build,300);});
+})();
