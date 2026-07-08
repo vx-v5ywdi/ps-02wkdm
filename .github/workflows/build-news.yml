@@ -1,12 +1,12 @@
 name: Build news
 
-# Pulls news content from the separate, editor-writable repo (OWNER/ct-al2mru),
-# regenerates the article pages + homepage cards, and commits them here.
-# The editor never has access to this repo — only to ct-al2mru.
+# Regenerates the news article pages + listing from the content repo (OWNER/ct-al2mru).
+# Runs ONLY when the content repo signals a change (the CMS saved a news item),
+# when run manually, or when the templates/build script change here.
 on:
-  schedule:
-    - cron: '*/5 * * * *'      # check the content repo every ~5 min
-  workflow_dispatch:            # ...or run manually for an instant rebuild
+  repository_dispatch:
+    types: [news-updated]     # fired by the content repo after a CMS save
+  workflow_dispatch:          # manual "Run workflow" for an instant rebuild
   push:
     paths:
       - 'templates/news-article.*.html'
@@ -46,7 +46,7 @@ jobs:
             fi
             echo "Synced $(ls content/news/*.json 2>/dev/null | wc -l) news items."
           else
-            echo "ct-al2mru not found yet; building from local content/news."
+            echo "content repo not found yet; building from local content/news."
           fi
 
       - uses: actions/setup-python@v5
@@ -60,7 +60,7 @@ jobs:
           rm -rf _newsrepo
           git config user.name "content-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add content/news images novini en/novini index.html en/index.html
+          git add content/news images news en/news index.html en/index.html
           if git diff --cached --quiet; then
             echo "No changes."
           else
