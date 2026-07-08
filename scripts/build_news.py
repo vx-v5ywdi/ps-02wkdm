@@ -139,3 +139,13 @@ for a in items:
 open('news/index.html','w',encoding='utf-8').write(render_list(False))
 open('en/news/index.html','w',encoding='utf-8').write(render_list(True))
 print('built',len(items),'items + 2 listing pages')
+
+# regenerate sitemap.xml so newly added news articles are always included
+sm=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+for hf in sorted(glob.glob('**/*.html',recursive=True)):
+    if hf.startswith('templates/') or hf=='404.html': continue
+    path=hf[:-10] if hf.endswith('index.html') else hf
+    sm.append('  <url><loc>https://gdbop.bg/'+path+'</loc></url>')
+sm.append('</urlset>')
+open('sitemap.xml','w',encoding='utf-8').write('\n'.join(sm)+'\n')
+print('sitemap.xml:',len(sm)-3,'urls')
