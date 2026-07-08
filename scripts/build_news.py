@@ -101,7 +101,7 @@ def card(a,slug,en):
 def card_list(a,slug,en):
     date=dispdate(a.get('date','')); tag=CAT.get(a.get('category'),('',''))[1 if en else 0]
     title=(a.get('title_en' if en else 'title_bg') or a.get('title_bg',''))
-    imgp='../images/'+safe_img(a.get('image',''))
+    imgp=('../../images/' if en else '../images/')+safe_img(a.get('image',''))
     return ('      <a class="news-card reveal" href="'+esc(slug)+'.html">\n'
       f'        <div class="news-thumb"><img src="{esc(imgp)}" alt=""><span class="news-date">{esc(date)}</span></div>\n'
       '        <div class="news-body">\n'
