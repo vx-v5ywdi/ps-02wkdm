@@ -1,0 +1,69 @@
+name: Build news
+
+# Pulls news content from the separate, editor-writable repo (OWNER/ct-al2mru),
+# regenerates the article pages + homepage cards, and commits them here.
+# The editor never has access to this repo — only to ct-al2mru.
+on:
+  schedule:
+    - cron: '*/5 * * * *'      # check the content repo every ~5 min
+  workflow_dispatch:            # ...or run manually for an instant rebuild
+  push:
+    paths:
+      - 'templates/news-article.*.html'
+      - 'scripts/build_news.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-news
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website repo
+        uses: actions/checkout@v4
+
+      - name: Checkout news content repo
+        uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: ${{ vars.NEWS_REPO || format('{0}/ct-al2mru', github.repository_owner) }}
+          path: _newsrepo
+
+      - name: Sync news content (json + images only)
+        run: |
+          if [ -d _newsrepo/content/news ]; then
+            mkdir -p content/news images
+            rm -f content/news/*.json
+            find _newsrepo/content/news -maxdepth 1 -name '*.json' -exec cp {} content/news/ \;
+            if [ -d _newsrepo/images ]; then
+              find _newsrepo/images -maxdepth 1 -type f \
+                \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.webp' -o -iname '*.gif' -o -iname '*.svg' \) \
+                -exec cp {} images/ \;
+            fi
+            echo "Synced $(ls content/news/*.json 2>/dev/null | wc -l) news items."
+          else
+            echo "ct-al2mru not found yet; building from local content/news."
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install markdown bleach
+      - run: python scripts/build_news.py
+
+      - name: Commit regenerated pages
+        run: |
+          rm -rf _newsrepo
+          git config user.name "content-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add content/news images novini en/novini index.html en/index.html
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Rebuild news from content repo"
+            git push
+          fi
