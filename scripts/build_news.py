@@ -30,7 +30,7 @@ CAT={'drugs':('Наркотици','Drugs'),'cyber':('Киберпрестъпн
  'counterfeiting':('Фалшификации','Counterfeiting'),'cultural-valuables':('Културни ценности','Cultural Valuables'),
  'financial-fraud':('Финансови измами','Financial Fraud'),'investigation':('Разследване','Investigation'),
  'smuggling':('Контрабанда','Smuggling'),'corruption':('Корупция и изпиране на пари','Corruption and Money Laundering')}
-NB=' '
+NB='\u00a0'
 def nbsp(html):
     blocks=[]
     def stash(m): blocks.append(m.group(0)); return '\x00'+str(len(blocks)-1)+'\x00'
