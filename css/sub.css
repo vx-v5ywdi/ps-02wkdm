@@ -154,6 +154,9 @@ body.menu-open{overflow:hidden}
 .acc-a-inner{padding:1.4rem;font-size:.88rem;color:var(--text-dim)}
 .acc-a-inner p{margin-bottom:.8rem}
 .acc-a-inner p:last-child{margin-bottom:0}
+.acc-a-inner ol,.acc-a-inner ul{margin:.2rem 0 .2rem 1.25rem;padding-left:.5rem}
+.acc-a-inner li{margin-bottom:.45rem}
+.acc-a-inner li:last-child{margin-bottom:0}
 
 /* callout */
 .callout{background:var(--navy-800);border:1px solid var(--line);border-left:3px solid var(--gold);padding:1.4rem 1.6rem;margin:1.6rem 0;font-size:.88rem;color:var(--text-dim)}
