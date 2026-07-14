@@ -40,6 +40,12 @@ document.querySelectorAll('.acc-item').forEach(item=>{
   });
 });
 
+// open an accordion item linked directly via URL hash (e.g. #faq-victim)
+(function(){try{var h=location.hash&&document.querySelector(location.hash);
+  if(h&&h.classList&&h.classList.contains('acc-item')){var q=h.querySelector('.acc-q'),a=h.querySelector('.acc-a');
+    h.classList.add('open');if(q)q.setAttribute('aria-expanded','true');if(a)a.style.maxHeight=a.scrollHeight+'px';
+    setTimeout(function(){h.scrollIntoView({behavior:'smooth',block:'center'});},120);}}catch(e){}})();
+
 // keep open accordion panels sized correctly on resize/rotation
 let rT;addEventListener('resize',()=>{clearTimeout(rT);rT=setTimeout(()=>{
   document.querySelectorAll('.acc-item.open .acc-a').forEach(a=>a.style.maxHeight=a.scrollHeight+'px');
