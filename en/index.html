@@ -216,7 +216,7 @@ section{padding:6rem 0}
 .partners-row a{font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);padding:.6rem .4rem;position:relative;transition:color .25s}
 .partners-row a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transition:transform .3s var(--ease)}
 .partners-row a:hover{color:var(--gold-light)}
-.partners-row a:hover::after{transform:scaleX(1)}
+.partners-row a:hover::after{transform:scaleX(1)}.useful-home{padding:5rem 0}.uh-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:2.5rem}.uh-card{background:var(--navy-800);border:1px solid rgba(255,255,255,.07);border-top:2px solid var(--gold);padding:1.8rem}.uh-card h3{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 1.2rem}.uh-card .hotlines{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}.uh-card .hotline{display:flex;flex-direction:column;gap:.15rem;background:var(--navy-900);border:1px solid rgba(255,255,255,.08);border-left:3px solid var(--gold);padding:.8rem 1rem;text-decoration:none;transition:transform .2s,background .2s}.uh-card .hotline:hover{background:rgba(255,200,61,.08);transform:translateY(-2px)}.uh-card .hotline .num{font-size:1.1rem;font-weight:800;color:var(--gold)}.uh-card .hotline .lbl{font-size:.76rem;color:var(--text-dim);line-height:1.35}.uh-docs{display:flex;flex-direction:column;gap:.5rem}.uh-doc{display:flex;align-items:center;gap:1rem;justify-content:space-between;background:var(--navy-900);border:1px solid rgba(255,255,255,.07);padding:.85rem 1.1rem;color:var(--text);text-decoration:none;font-size:.86rem;line-height:1.4;transition:background .2s,border-color .2s}.uh-doc:hover{background:rgba(255,200,61,.07);border-color:var(--gold)}.uh-doc .uh-ext{flex-shrink:0;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-dim)}.uh-doc.more{color:var(--gold);font-weight:600}@media(max-width:820px){.uh-grid{grid-template-columns:1fr}.uh-card .hotlines{grid-template-columns:1fr}}
 
 /* ---------- footer ---------- */
 footer{background:var(--navy-950);border-top:1px solid rgba(255,255,255,.07)}
@@ -538,6 +538,38 @@ footer{background:var(--navy-950);border-top:1px solid rgba(255,255,255,.07)}
 </section>
 
 <!-- NEWS -->
+
+<!-- USEFUL -->
+<section class="useful-home" id="polezno">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-kicker reveal">Useful</div>
+      <h2 class="reveal">Useful information and reporting lines</h2>
+      <p class="reveal">Key national hotlines and documents for citizens.</p>
+    </div>
+    <div class="uh-grid reveal">
+      <div class="uh-card">
+        <h3>National reporting hotlines</h3>
+        <div class="hotlines">
+          <a class="hotline" href="tel:112"><span class="num">112</span><span class="lbl">Single European emergency number</span></a>
+          <a class="hotline" href="tel:+35929828363"><span class="num">02 982 83 63</span><span class="lbl">GDCOC — MoI</span></a>
+          <a class="hotline" href="tel:+35928147070"><span class="num">02 814 70 70</span><span class="lbl">SANS — terrorist-threat reports</span></a>
+          <a class="hotline" href="tel:116000"><span class="num">116 000</span><span class="lbl">Missing children</span></a>
+          <a class="hotline" href="tel:116111"><span class="num">116 111</span><span class="lbl">Children at risk</span></a>
+        </div>
+      </div>
+      <div class="uh-card">
+        <h3>Documents & resources</h3>
+        <div class="uh-docs">
+          <a class="uh-doc" href="../files/zapoved-predlozheniya-i-signali.pdf" target="_blank" rel="noopener noreferrer"><span>Order on proposals and reports to GDCOC-MoI (in Bulgarian)</span><span class="uh-ext">Document ↗</span></a>
+          <a class="uh-doc" href="https://eur-lex.europa.eu/legal-content/BG/TXT/?uri=uriserv%3AOJ.L_.2013.039.01.0001.01.BUL" target="_blank" rel="noopener noreferrer"><span>Regulation (EU) No 98/2013 — explosives precursors (in Bulgarian)</span><span class="uh-ext">Document ↗</span></a>
+          <a class="uh-doc" href="https://www.enisa.europa.eu/sites/default/files/ncss-map/strategies/reports/BG_NCSS_2021_bg.pdf" target="_blank" rel="noopener noreferrer"><span>National Cyber Security Strategy (in Bulgarian)</span><span class="uh-ext">Document ↗</span></a>
+          <a class="uh-doc more" href="about.html#useful"><span>All useful materials</span><span class="uh-ext">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- PARTNERS -->
 <div class="partners">
