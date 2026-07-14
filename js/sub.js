@@ -84,3 +84,22 @@ if(burger&&nav){
   build();
   var t; addEventListener('resize',function(){clearTimeout(t);t=setTimeout(build,300);});
 })();
+
+// news listing pagination (5 rows x 4 = 20 per page)
+(function(){var grid=document.querySelector('.news-grid');if(!grid)return;
+  var cards=[].slice.call(grid.querySelectorAll('.news-card')),per=20;
+  if(cards.length<=per)return;
+  var pages=Math.ceil(cards.length/per),cur=1,pager=document.createElement('div');
+  pager.className='pager';grid.parentNode.insertBefore(pager,grid.nextSibling);
+  function render(){
+    cards.forEach(function(c,i){c.style.display=(i>=(cur-1)*per&&i<cur*per)?'':'none';});
+    pager.innerHTML='';
+    function mk(txt,pg,dis,act){var b=document.createElement('button');b.className='pager-btn'+(act?' active':'');b.textContent=txt;
+      if(dis)b.disabled=true;else b.onclick=function(){cur=pg;render();window.scrollTo({top:(grid.getBoundingClientRect().top+window.scrollY-120),behavior:'smooth'});};
+      pager.appendChild(b);}
+    mk('‹',cur-1,cur===1,false);
+    for(var p=1;p<=pages;p++)mk(String(p),p,false,p===cur);
+    mk('›',cur+1,cur===pages,false);
+  }
+  render();
+})();
