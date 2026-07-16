@@ -56,7 +56,7 @@ nav.primary li:hover .dropdown,nav.primary li:focus-within .dropdown{opacity:1;v
 }
 .lang-btn{display:inline-flex;align-items:center;justify-content:center;align-self:center;padding:.5rem .85rem;border:1px solid var(--line);font-size:.7rem;font-weight:700;letter-spacing:.14em;color:var(--gold);transition:all .25s;white-space:nowrap;flex-shrink:0}
 .lang-btn:hover{background:var(--gold);color:var(--navy-950)}
-.nav-actions{display:flex;align-items:center;gap:.75rem}.socials{display:flex;align-items:center;gap:.55rem}.socials a{display:inline-flex;color:var(--text-dim);transition:color .2s,transform .2s}.socials a:hover{color:var(--gold);transform:translateY(-2px)}.socials svg{width:19px;height:19px;display:block}@media(max-width:1060px){.socials{display:none}}
+.nav-actions{display:flex;align-items:center;gap:.75rem}.socials{display:flex;align-items:center;gap:.55rem}.socials a{display:inline-flex;color:var(--text-dim);transition:color .2s,transform .2s}.socials a:hover{color:var(--gold);transform:translateY(-2px)}.socials svg{width:19px;height:19px;display:block}.socials img{height:22px;width:auto;display:block}@media(max-width:1060px){.socials{display:none}}
 .burger{display:none;background:none;border:0;cursor:pointer;padding:.6rem}
 .burger span{display:block;width:26px;height:2px;background:var(--text);margin:6px 0;transition:.3s var(--ease)}
 .burger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
