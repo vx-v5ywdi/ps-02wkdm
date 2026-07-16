@@ -91,7 +91,7 @@ nav.primary li:hover .dropdown,nav.primary li:focus-within .dropdown{opacity:1;v
 body.menu-open{overflow:hidden}
 
 /* ---------- hero ---------- */
-.hero{position:relative;height:min(88vh,820px);min-height:560px;overflow:hidden;background:var(--navy-950)}.eu-badge{position:absolute;top:16px;right:clamp(1rem,4vw,3rem);width:min(230px,44vw);z-index:6;pointer-events:none;opacity:.92;filter:drop-shadow(0 2px 7px rgba(0,0,0,.55))}@media(max-width:700px){.eu-badge{top:12px;width:150px}}
+.hero{position:relative;height:min(88vh,820px);min-height:560px;overflow:hidden;background:var(--navy-950)}.eu-badge{position:absolute;top:16px;right:clamp(1rem,4vw,3rem);width:min(230px,44vw);z-index:6;opacity:.92;cursor:pointer;display:block;filter:drop-shadow(0 2px 7px rgba(0,0,0,.55));transition:opacity .2s,transform .2s}.eu-badge img{width:100%;display:block}.eu-badge:hover{opacity:1;transform:translateY(1px)}@media(max-width:700px){.eu-badge{top:12px;width:150px}}
 .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease}
 .slide.active{opacity:1}
 .slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 7s linear}
@@ -352,7 +352,7 @@ footer{background:var(--navy-950);border-top:1px solid rgba(255,255,255,.07)}
 
 <!-- HERO -->
 <section class="hero" id="start" style="padding:0">
-  <img class="eu-badge" src="/images/eu-cofinanced-bg.svg" alt="Съфинансирано от Европейския съюз" width="230">
+  <a class="eu-badge" href="projects/fvs-2021-2027.html" title="Фонд „Вътрешна сигурност“ 2021–2027 — съфинансиран от ЕС" aria-label="Фонд „Вътрешна сигурност“ 2021–2027 — съфинансиран от ЕС"><img src="/images/eu-cofinanced-bg.svg" alt="Съфинансирано от Европейския съюз" width="230"></a>
   <div class="slide active"><img src="images/hero-team.jpg" width="2048" height="1366" alt="Екип на ГДБОП"></div>
   <div class="slide"><img src="images/hero-specops.jpg" width="2048" height="1446" alt="Специални операции на ГДБОП"></div>
   <div class="slide"><img src="images/hero-winter.jpg" loading="lazy" width="2048" height="1066" alt="Служители на ГДБОП при зимна подготовка"></div>
